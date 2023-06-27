@@ -34,3 +34,19 @@ module.exports.get = async (event) => {
     };
   }
 };
+
+module.exports.update = async (event) => {
+  try {
+    
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "An error occurred" }),
+    };
+  }
+};
