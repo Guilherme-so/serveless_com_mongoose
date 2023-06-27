@@ -37,11 +37,29 @@ module.exports.get = async (event) => {
 
 module.exports.update = async (event) => {
   try {
-    
+    const { _id, title, description } = JSON.parse(event.body);
+    const note = Note.findByIdAndUpdate(_id, {title, description});
+    const updatedNote = await note.save(note);
 
     return {
       statusCode: 200,
-      body: JSON.stringify(),
+      body: JSON.stringify(updatedNote),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "An error occurred" }),
+    };
+  }
+};
+
+module.exports.delete = async (event) => {
+  try {
+    const { _id} = JSON.parse(event.body);
+    const note = Note.findByIdAndDelete(_id);
+
+    return {
+      statusCode: 200,
     };
   } catch (error) {
     return {

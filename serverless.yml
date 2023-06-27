@@ -76,3 +76,17 @@ functions:
       - http:
           path: notes
           method: get
+
+  update:
+    handler: handler.update
+    events:
+      - http:
+          path: notes
+          method: put
+
+  delete:
+    handler: handler.delete
+    events:
+      - http:
+          path: notes
+          method: delete
